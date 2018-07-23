@@ -13,17 +13,7 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
-
-
-// Shared Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass variables found in Ionic's source scss files.
-// To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-
-
+@import './gradient-mixins';
 
 // Named Color Variables
 // --------------------------------------------------
@@ -41,6 +31,16 @@ $colors: (
   dark:       #222
 );
 
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+$text-color: white !default;
+$link-color: color($colors, light) !default;
+$toolbar-background: transparent !default;
 
 // App iOS Variables
 // --------------------------------------------------
@@ -71,7 +71,7 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
-
+@import "./facebook-messenger-theme";
 
 // Ionicons
 // --------------------------------------------------

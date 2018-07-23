@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-signup',
@@ -14,7 +8,25 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  signupForm: FormGroup;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+    this.signupForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.matchingPasswords('password', 'confirmpassword')});
+  }
+
+  matchingPasswords(pwdkey: string, confirmpwdkey: string) {
+    return (group) => {
+      let pwdInp = group.controls[pwdkey];
+      let confpwdInp = group.controls[confirmpwdkey];
+
+      if(pwdInp.value !== confpwdInp.value) {
+        return confpwdInp.setErrors({notEqual: true})
+      }
+    }
   }
 
   ionViewDidLoad() {
