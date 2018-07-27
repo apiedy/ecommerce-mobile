@@ -21,7 +21,7 @@
     </ion-item>
 
     <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty" class="validator-error" >
-      <ion-icon name="ios-alert"></ion-icon> Please enter a valid password
+      Please enter a valid password
     </div>
 
     <ion-row class="login-btn">
@@ -35,7 +35,7 @@
     <ion-row>
       <ion-col text-center>
         <button ion-button clear color="light" [navPush]="pushPage">
-          Create account now ->
+          Create account now &nbsp;<ion-icon name="ios-arrow-forward"></ion-icon>
         </button>
       </ion-col>
     </ion-row>

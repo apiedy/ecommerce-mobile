@@ -15,16 +15,28 @@
         <ion-label floating>username</ion-label>
         <ion-input [formControl]="signupForm.controls['username']" type="text" ></ion-input>
       </ion-item>
+
+      <div *ngIf="!signupForm.controls.username.valid && signupForm.controls.username.dirty" class="validator-error" >
+        Please enter a valid username
+      </div>
   
       <ion-item>
         <ion-label floating>password</ion-label>
         <ion-input [formControl]="signupForm.controls['password']" type="password" ></ion-input>
       </ion-item>
 
+      <div *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.dirty" class="validator-error" >
+        Please enter a valid password
+      </div>
+
       <ion-item>
         <ion-label floating>confirm password</ion-label>
         <ion-input [formControl]="signupForm.controls['confirmPassword']" type="password" ></ion-input>
       </ion-item>
+
+      <div *ngIf="!signupForm.controls.confirmPassword.valid && signupForm.controls.confirmPassword.dirty" class="validator-error" >
+        The passwords don't match
+      </div>
 
       <ion-row class="signup-btn">
         <ion-col text-center>
