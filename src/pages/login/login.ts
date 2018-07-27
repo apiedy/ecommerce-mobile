@@ -24,16 +24,7 @@ export class LoginPage {
     this.pushPage = SignupPage;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  login() {
+  public login() {
     console.log("login")
   }
-
-  signup() {
-    console.log("signup");
-  }
-
 }
