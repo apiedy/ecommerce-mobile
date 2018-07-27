@@ -17,6 +17,18 @@ page-signup {
 
         div.item-inner {
             border-bottom-color: white !important;
+
+            ion-label, ion-label[floating] {
+                color: white;
+            }
         }
+    }
+
+    .validator-error {
+        color: color($colors, light);
+        padding-top: 16px;
+        padding-left: 16px;
+        font-size: 14px;
+        line-height: 14px;
     }
 }

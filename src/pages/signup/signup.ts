@@ -15,14 +15,15 @@ export class SignupPage {
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-    }, { validator: this.matchingPasswords('password', 'confirmpassword')});
+    }, { validator: this.matchingPasswords('password', 'confirmPassword')});
   }
 
   matchingPasswords(pwdkey: string, confirmpwdkey: string) {
     return (group) => {
       let pwdInp = group.controls[pwdkey];
       let confpwdInp = group.controls[confirmpwdkey];
-
+      console.log(group.controls)
+      console.log(pwdInp)
       if(pwdInp.value !== confpwdInp.value) {
         return confpwdInp.setErrors({notEqual: true})
       }
