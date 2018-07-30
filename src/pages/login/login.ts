@@ -29,16 +29,17 @@ export class LoginPage {
   }
 
   public login() {
-    console.log("login");
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 
     this.userService.login(username, password).subscribe(
       (user) => {
         if(user[0]) {
+          this.userService.setCurrentUser(user[0]);
           this.navCtrl.setRoot(TabsPage);
         }
-      }
+      },
+      (err) => { }
     )
   }
 }

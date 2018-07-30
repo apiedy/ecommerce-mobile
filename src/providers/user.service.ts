@@ -6,17 +6,23 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class UserProvider {
     users$: FirebaseListObservable<any>;
+    currentUser: Object;
 
     constructor(private db: AngularFireDatabase) {
         this.users$ = this.db.list('users');
     }
     
     public login(username, password) {
-        console.log("service")
-        console.log("user", username)
-        console.log("pass", password)
         return this.users$.map((users => {
             return users.filter(user => user.username === username && user.password === password)
         }));
+    }
+
+    public setCurrentUser(user) {
+        this.currentUser = user;
+    }
+
+    public getCurrentUser() {
+        return this.currentUser;
     }
 }
