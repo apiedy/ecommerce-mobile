@@ -6,9 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 
-import { AboutPage } from '../pages/about/about';
+import { SellPage } from '../pages/sell/sell';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { BuyPage } from '../pages/buy/buy';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -24,9 +24,9 @@ import { firebaseConfig } from '../shared/firebase.config';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    SellPage,
     ContactPage,
-    HomePage,
+    BuyPage,
     TabsPage,
     LoginPage,
     SignupPage
@@ -44,9 +44,9 @@ import { firebaseConfig } from '../shared/firebase.config';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    SellPage,
     ContactPage,
-    HomePage,
+    BuyPage,
     TabsPage,
     LoginPage,
     SignupPage

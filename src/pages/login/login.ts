@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserProvider } from '../../providers/user.service';
 
 import { SignupPage } from '../signup/signup';
-import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
