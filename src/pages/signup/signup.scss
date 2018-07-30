@@ -1,7 +1,18 @@
 page-signup {
+    .toolbar {
+        .toolbar-background {
+            background-color: transparent;
+        }
+        
+        .back-button {
+            color: white;
+        }
+    }
+    
     .app-icon-container {
         padding-top: 44px;
         padding-bottom: 44px;
+        color: white;
     }
 
     .app-icon-zoom {
