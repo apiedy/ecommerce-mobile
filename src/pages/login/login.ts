@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { UserProvider } from '../../providers/user.service';
+
 import { SignupPage } from '../signup/signup';
 
 @Component({
@@ -15,7 +17,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public userService: UserProvider) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -25,6 +28,7 @@ export class LoginPage {
   }
 
   public login() {
-    console.log("login")
+    console.log("login");
+    this.userService.login();
   }
 }

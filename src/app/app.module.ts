@@ -15,7 +15,9 @@ import { SignupPage } from '../pages/signup/signup';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { FirebaseProvider } from '../providers/firebase/firebase';
+
+import { FirebaseProvider } from '../providers/firebase';
+import { UserProvider } from '../providers/user.service';
 
 import { firebaseConfig } from '../shared/firebase.config';
 
@@ -53,7 +55,8 @@ import { firebaseConfig } from '../shared/firebase.config';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
