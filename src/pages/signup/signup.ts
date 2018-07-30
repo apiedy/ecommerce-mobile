@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseProvider } from '../../providers/firebase/firebase';
+import { FirebaseProvider } from '../../providers/firebase';
 import { User } from '../../models/user';
 
 @Component({
