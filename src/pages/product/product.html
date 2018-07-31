@@ -14,9 +14,42 @@
     </ion-card-header>
 
     <ion-card-content>
-      buy content here
-    </ion-card-content>
-  </ion-card>
+      <ion-row>
+        <ion-col>Name</ion-col>
+        <ion-col>{{ product.name }}</ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>Price</ion-col>
+        <ion-col>{{ product.price }}</ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>No. Available</ion-col>
+        <ion-col>{{ product.number }}</ion-col>
+      </ion-row>
+
+      <form [formGroup]="buyForm">
+        <ion-item>
+          <ion-label>Quantity</ion-label>
+          <ion-input type="number" [formControl]="buyForm.controls['quantity']" [min]="0" [max]="product.number" (keyup)="calcTotal()"></ion-input>
+        </ion-item>
+      </form>
+      
+      <ion-row>
+        <ion-col>Total</ion-col>
+        <ion-col>{{ total }}</ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button block [disabled]="!buyForm.valid" (click)="buy()">
+            Buy
+          </button>
+        </ion-col>
+      </ion-row>
+      </ion-card-content>
+    </ion-card>
 
   <ion-card *ngIf="showEditContent">
     <ion-card-header>
