@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 
-import { AboutPage } from '../pages/about/about';
+import { SellPage } from '../pages/sell/sell';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { BuyPage } from '../pages/buy/buy';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+
+import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,16 +22,18 @@ import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
 
 import { firebaseConfig } from '../shared/firebase.config';
+import { ProductService } from '../providers/products.service';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    SellPage,
     ContactPage,
-    HomePage,
+    BuyPage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    AddProductModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,19 +48,21 @@ import { firebaseConfig } from '../shared/firebase.config';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    SellPage,
     ContactPage,
-    HomePage,
+    BuyPage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    AddProductModalComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    UserProvider
+    UserProvider,
+    ProductService
   ]
 })
 export class AppModule {}

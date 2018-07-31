@@ -11,7 +11,6 @@ export class FirebaseProvider {
   }
 
   public addUsers(user) {
-    console.log('pushing now');
     this.afd.list('/users/').push(user);
   }
 

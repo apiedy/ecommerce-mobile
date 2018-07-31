@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserProvider } from '../../providers/user.service';
 
 import { SignupPage } from '../signup/signup';
-import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
@@ -30,16 +29,17 @@ export class LoginPage {
   }
 
   public login() {
-    console.log("login");
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 
     this.userService.login(username, password).subscribe(
       (user) => {
         if(user[0]) {
+          this.userService.setCurrentUser(user[0]);
           this.navCtrl.setRoot(TabsPage);
         }
-      }
+      },
+      (err) => { }
     )
   }
 }

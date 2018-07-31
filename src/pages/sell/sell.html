@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Sell
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Products
+    </ion-list-header>
+    <ion-item *ngFor="let product of productList | async" detail-push (click)="showProductPage(product)">
+      <div>
+        <h2>{{ product.name }}</h2>
+        <h3>{{ product.number }} available</h3>
+        <p>Sold by {{ product.seller }}</p>
+      </div>
+      
+      <h2 item-end>{{ product.price }}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button clear block (click)="openModal()">
+      Add Product &nbsp;<ion-icon name="add"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>

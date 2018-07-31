@@ -1,10 +1,10 @@
 .facebook-messenger-theme {
 	page-login, page-signup {
 		ion-content {
-		@include linear-gradient(left,$facebook-messenger);
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		background-size: cover;
+			@include linear-gradient(left,$facebook-messenger);
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			background-size: cover;
 		}
 	}
 }
