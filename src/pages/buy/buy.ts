@@ -4,6 +4,10 @@ import { FirebaseListObservable } from 'angularfire2/database';
 
 import { ProductService } from '../../providers/products.service';
 
+import { ProductPage } from  '../product/product';
+
+import { CONST } from '../../shared/constants';
+
 @Component({
   selector: 'page-buy',
   templateUrl: 'buy.html'
@@ -16,7 +20,10 @@ export class BuyPage {
   }
 
   public showProductPage(product) {
-    console.log(product)
+    const params = {
+      product: product,
+      mode: CONST.buy
+    }
+    this.navCtrl.push(ProductPage, params);
   }
-
 }

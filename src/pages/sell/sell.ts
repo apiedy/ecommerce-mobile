@@ -4,7 +4,11 @@ import { FirebaseListObservable } from 'angularfire2/database';
 
 import { UserProvider } from '../../providers/user.service';
 import { ProductService } from '../../providers/products.service';
+
 import { AddProductModalComponent } from '../../components/add-product-modal/add-product-modal';
+import { ProductPage } from '../product/product';
+
+import { CONST } from '../../shared/constants';
 
 @Component({
   selector: 'page-sell',
@@ -24,7 +28,11 @@ export class SellPage {
   }
 
   public showProductPage(product) {
-    console.log(product);
+    const params = {
+      product: product,
+      mode: CONST.edit
+    }
+    this.navCtrl.push(ProductPage, params);
   }
 
   ionViewDidLoad() {

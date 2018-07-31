@@ -12,6 +12,7 @@ import { BuyPage } from '../pages/buy/buy';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ProductPage } from '../pages/product/product';
 
 import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
 
@@ -33,6 +34,7 @@ import { ProductService } from '../providers/products.service';
     TabsPage,
     LoginPage,
     SignupPage,
+    ProductPage,
     AddProductModalComponent
   ],
   imports: [
@@ -54,6 +56,7 @@ import { ProductService } from '../providers/products.service';
     TabsPage,
     LoginPage,
     SignupPage,
+    ProductPage,
     AddProductModalComponent
   ],
   providers: [
