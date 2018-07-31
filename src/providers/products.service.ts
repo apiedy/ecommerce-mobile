@@ -18,4 +18,8 @@ export class ProductService {
     public removeProduct(product) {
         this.db.list('/products/').remove(product);
     }
+
+    public updateProduct(product, key) {
+        this.db.object('/products/'+ key).update(product);
+    }
 }
