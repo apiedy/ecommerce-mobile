@@ -11,16 +11,14 @@
     <ion-list-header>
       Products
     </ion-list-header>
-    <ion-item *ngFor="let product of productList | async" detail-push>
-      <div item-start>
+    <ion-item *ngFor="let product of productList | async" detail-push (click)="showProductPage(product)">
+      <div>
         <h2>{{ product.name }}</h2>
-        <h3>{{ product.stockAvailable }}</h3>
-        <p>{{ product.seller }}</p>
+        <h3>{{ product.number }} available</h3>
+        <p>Sold by {{ product.seller }}</p>
       </div>
-
-      <div item-end>
-        <h2>{{ product.price }}</h2>
-      </div>
+      
+      <h2 item-end>{{ product.price }}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

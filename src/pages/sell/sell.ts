@@ -23,6 +23,10 @@ export class SellPage {
     this.addproductModal.present();
   }
 
+  public showProductPage(product) {
+    console.log(product);
+  }
+
   ionViewDidLoad() {
     console.log(this.userService.getCurrentUser())
   }

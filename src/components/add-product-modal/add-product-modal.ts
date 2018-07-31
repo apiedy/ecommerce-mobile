@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/**
- * Generated class for the AddProductModalComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { UserProvider } from '../../providers/user.service';
+import { ProductService } from '../../providers/products.service';
+
+import { ProductListing } from '../../models/productListing';
+
 @Component({
   selector: 'add-product-modal',
   templateUrl: 'add-product-modal.html'
@@ -15,9 +14,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddProductModalComponent {
 
   title: string;
-  addProductForm;
+  addProductForm: FormGroup;
 
-  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder) {
+  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder, public userService: UserProvider, public prodService: ProductService) {
     this.title = 'Add Product';
     this.createForm();
   }
@@ -32,5 +31,15 @@ export class AddProductModalComponent {
 
   public dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  public addProduct() {
+    const seller = this.userService.getCurrentUser()['username'];
+
+    const product = new ProductListing(this.addProductForm.value.name, this.addProductForm.value.price, this.addProductForm.value.number, seller);
+
+    console.log(product);
+    this.prodService.addProduct(product);
+    this.dismiss();
   }
 }
