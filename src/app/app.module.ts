@@ -7,7 +7,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 
 import { SellPage } from '../pages/sell/sell';
-import { ContactPage } from '../pages/contact/contact';
+import { InventoryPage } from '../pages/inventory/inventory';
 import { BuyPage } from '../pages/buy/buy';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
@@ -21,15 +21,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
+import { ProductService } from '../providers/products.service';
+import { InventoryService } from '../providers/inventory.service';
 
 import { firebaseConfig } from '../shared/firebase.config';
-import { ProductService } from '../providers/products.service';
 
 @NgModule({
   declarations: [
     MyApp,
     SellPage,
-    ContactPage,
+    InventoryPage,
     BuyPage,
     TabsPage,
     LoginPage,
@@ -51,7 +52,7 @@ import { ProductService } from '../providers/products.service';
   entryComponents: [
     MyApp,
     SellPage,
-    ContactPage,
+    InventoryPage,
     BuyPage,
     TabsPage,
     LoginPage,
@@ -65,7 +66,8 @@ import { ProductService } from '../providers/products.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     UserProvider,
-    ProductService
+    ProductService,
+    InventoryService
   ]
 })
 export class AppModule {}
