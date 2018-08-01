@@ -1,4 +1,6 @@
 export const CONST = {
     buy: "BUY",
-    edit: "EDIT"
+    edit: "EDIT",
+    trade: 'TRADE',
+    sell: 'SELL'
 }

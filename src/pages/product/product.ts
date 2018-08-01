@@ -23,12 +23,14 @@ export class ProductPage {
   public buyForm: FormGroup;
 
   private mode: string;
+  private listingMode: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider) {
     this.product = this.navParams.get('product');
     this.mode = this.navParams.get('mode');
+    this.listingMode = this.navParams.get('listingMode');
     this.showBuyContent = (this.mode === CONST.buy);
-    this.showEditContent = (this.mode === CONST.edit);
+    this.showEditContent = (this.mode === CONST.edit && this.listingMode === CONST.buy);
     this.createForm();
   }
 
@@ -67,9 +69,9 @@ export class ProductPage {
     const newNumber = this.product.number - buyingNumber;
     const newProdVal = new ProductListing(
       this.product.name,
-      this.product.price,
       newNumber,
-      this.product.seller
+      this.product.seller,
+      this.product.price
     );
 
     const invItem = new InventoryItem(

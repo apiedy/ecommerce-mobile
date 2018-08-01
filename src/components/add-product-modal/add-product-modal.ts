@@ -6,6 +6,7 @@ import { UserProvider } from '../../providers/user.service';
 import { ProductService } from '../../providers/products.service';
 
 import { ProductListing } from '../../models/productListing';
+import { CONST } from '../../shared/constants';
 
 @Component({
   selector: 'add-product-modal',
@@ -13,19 +14,26 @@ import { ProductListing } from '../../models/productListing';
 })
 export class AddProductModalComponent {
 
-  title: string;
-  addProductForm: FormGroup;
+  public title: string;
+  public listingMode: string = 'trade';
+  public addProductForm: FormGroup;
+  public tradeProductForm: FormGroup;
 
   constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder, public userService: UserProvider, public prodService: ProductService) {
     this.title = 'Add Product';
-    this.createForm();
+    this.createForms();
   }
 
-  private createForm() {
+  private createForms() {
     this.addProductForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       number: ['', Validators.required]
+    });
+
+    this.tradeProductForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      tradeFor: ['', Validators.required]
     });
   }
 
@@ -35,10 +43,10 @@ export class AddProductModalComponent {
 
   public addProduct() {
     const seller = this.userService.getCurrentUser()['username'];
+    const product = this.listingMode === CONST.sell 
+                    ? new ProductListing(this.addProductForm.value.name, this.addProductForm.value.number, seller, this.addProductForm.value.price)
+                    : new ProductListing(this.tradeProductForm.value.name, 1, seller, null, this.tradeProductForm.value.tradeFor);
 
-    const product = new ProductListing(this.addProductForm.value.name, this.addProductForm.value.price, this.addProductForm.value.number, seller);
-
-    console.log(product);
     this.prodService.addProduct(product);
     this.dismiss();
   }

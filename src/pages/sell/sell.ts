@@ -30,7 +30,8 @@ export class SellPage {
   public showProductPage(product) {
     const params = {
       product: product,
-      mode: CONST.edit
+      mode: CONST.edit,
+      listingMode: product.price ? CONST.buy : CONST.trade
     }
     this.navCtrl.push(ProductPage, params);
   }
