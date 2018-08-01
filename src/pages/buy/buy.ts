@@ -24,7 +24,8 @@ export class BuyPage {
   public showProductPage(product) {
     const params = {
       product: product,
-      mode: this.listingMode === CONST.buy.toLowerCase() ? CONST.buy : CONST.trade
+      mode: CONST.buy,
+      listingMode: this.listingMode.toUpperCase()
     }
     this.navCtrl.push(ProductPage, params);
   }
