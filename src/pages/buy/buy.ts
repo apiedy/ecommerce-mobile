@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FirebaseListObservable } from 'angularfire2/database';
+import 'rxjs/add/operator/map';
 
 import { ProductService } from '../../providers/products.service';
 
@@ -14,6 +15,7 @@ import { CONST } from '../../shared/constants';
 })
 export class BuyPage {
   productList: FirebaseListObservable<any[]>;
+  public listingMode: string = 'buy';
 
   constructor(public navCtrl: NavController, public prodService: ProductService) {
     this.productList = this.prodService.getProducts();
@@ -22,7 +24,8 @@ export class BuyPage {
   public showProductPage(product) {
     const params = {
       product: product,
-      mode: CONST.buy
+      mode: CONST.buy,
+      listingMode: this.listingMode.toUpperCase()
     }
     this.navCtrl.push(ProductPage, params);
   }

@@ -7,31 +7,63 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="listingMode">
+      <ion-segment-button value="sell">
+        Sale
+      </ion-segment-button>
+      <ion-segment-button value="trade">
+        Trade
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="addProductForm">
-    <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-input type="text" [formControl]="addProductForm.controls['name']"></ion-input>
-    </ion-item>
+  <div [ngSwitch]="listingMode">
+    <form *ngSwitchCase="'sell'" [formGroup]="addProductForm">
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" [formControl]="addProductForm.controls['name']"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Price</ion-label>
-      <ion-input type="number" [formControl]="addProductForm.controls['price']"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Price</ion-label>
+        <ion-input type="number" [formControl]="addProductForm.controls['price']"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Number</ion-label>
-      <ion-input type="number" [formControl]="addProductForm.controls['number']"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Number</ion-label>
+        <ion-input type="number" [formControl]="addProductForm.controls['number']"></ion-input>
+      </ion-item>
 
-    <ion-row>
-      <ion-col text-center>
-        <button ion-button block [disabled]="!addProductForm.valid" (click)="addProduct()">
-          LIST FOR SALE
-        </button>
-      </ion-col>
-    </ion-row>
-  </form>
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button block [disabled]="!addProductForm.valid" (click)="addProduct()">
+            LIST FOR SALE
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <form *ngSwitchCase="'trade'" [formGroup]="tradeProductForm">
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" [formControl]="tradeProductForm.controls['name']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Trade for</ion-label>
+        <ion-input type="text" [formControl]="tradeProductForm.controls['tradeFor']"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col text-center>
+          <button ion-button block [disabled]="!tradeProductForm.valid" (click)="addProduct()">
+            LIST FOR TRADE
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
 </ion-content>

@@ -2,18 +2,29 @@
   <ion-navbar>
     <ion-title>Buy</ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="listingMode">
+      <ion-segment-button value="buy">
+        Buy
+      </ion-segment-button>
+      <ion-segment-button value="trade">
+        Trade
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of productList | async" detail-push (click)="showProductPage(product)">
+    <ion-item [ngSwitch]="listingMode" *ngFor="let product of productList | async | prodFilter: listingMode" detail-push (click)="showProductPage(product)">
       <div>
         <h2>{{ product.name }}</h2>
-        <h3>{{ product.number }} available</h3>
+        <h3 *ngSwitchCase="'buy'">{{ product.number }} available</h3>
+        <h3 *ngSwitchCase="'trade'">Trading for {{ product.tradeFor }}</h3>
         <p>Sold by {{ product.seller }}</p>
       </div>
       
-      <h2 item-end>{{ product.price | currency: 'USD' }}</h2>
+      <h2 *ngSwitchCase="'buy'" item-end>{{ product.price | currency: 'USD' }}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -24,6 +24,8 @@ import { UserProvider } from '../providers/user.service';
 import { ProductService } from '../providers/products.service';
 import { InventoryService } from '../providers/inventory.service';
 
+import { ProductsFilter } from '../pipes/products-filter.pipe';
+
 import { firebaseConfig } from '../shared/firebase.config';
 
 @NgModule({
@@ -36,7 +38,8 @@ import { firebaseConfig } from '../shared/firebase.config';
     LoginPage,
     SignupPage,
     ProductPage,
-    AddProductModalComponent
+    AddProductModalComponent,
+    ProductsFilter
   ],
   imports: [
     BrowserModule,

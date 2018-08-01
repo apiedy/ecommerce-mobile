@@ -9,11 +9,10 @@
 
 <ion-content>
   <ion-card *ngIf="showBuyContent">
-    <ion-card-header>
+    <ion-card-header *ngIf="!isTradeListing">
       Buy this product
     </ion-card-header>
-
-    <ion-card-content>
+    <ion-card-content *ngIf="!isTradeListing">
       <ion-row>
         <ion-col>Name</ion-col>
         <ion-col>{{ product.name }}</ion-col>
@@ -48,15 +47,38 @@
           </button>
         </ion-col>
       </ion-row>
-      </ion-card-content>
-    </ion-card>
+    </ion-card-content>
+
+    <ion-card-header *ngIf="isTradeListing">
+      Trade for this product
+    </ion-card-header>
+    <ion-card-content *ngIf="isTradeListing">
+        <ion-row>
+          <ion-col>Name</ion-col>
+          <ion-col>{{ product.name }}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>Trading for</ion-col>
+          <ion-col>{{ product.tradeFor }}</ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col text-center>
+            <button ion-button block [disabled]="!tradeValid" (click)="trade()">
+              Trade
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
 
   <ion-card *ngIf="showEditContent">
     <ion-card-header>
       Edit this listing
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content *ngIf="!isTradeListing">
       <form [formGroup]="editForm">
         <ion-item>
           <ion-label>Name</ion-label>
@@ -85,6 +107,32 @@
           </ion-col>
         </ion-row>
       </form>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="isTradeListing">
+        <form [formGroup]="editForm">
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input type="text" [formControl]="editForm.controls['name']"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Trading for</ion-label>
+            <ion-input type="text" [formControl]="editForm.controls['tradeFor']"></ion-input>
+          </ion-item>
+  
+          <ion-row>
+            <ion-col text-center>
+              <button ion-button block [disabled]="!editForm.valid" (click)="edit()">
+                Edit
+              </button>
+            </ion-col>
+  
+            <ion-col text-center>
+              <button ion-button block color="danger" (click)="remove()">Delete</button>
+            </ion-col>
+          </ion-row>
+        </form>      
     </ion-card-content>
   </ion-card>
 </ion-content>
