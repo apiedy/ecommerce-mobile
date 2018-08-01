@@ -21,9 +21,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
+import { ProductService } from '../providers/products.service';
+import { InventoryService } from '../providers/inventory.service';
 
 import { firebaseConfig } from '../shared/firebase.config';
-import { ProductService } from '../providers/products.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ProductService } from '../providers/products.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     UserProvider,
-    ProductService
+    ProductService,
+    InventoryService
   ]
 })
 export class AppModule {}

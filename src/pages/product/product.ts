@@ -3,9 +3,12 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ProductService } from '../../providers/products.service';
+import { InventoryService } from '../../providers/inventory.service';
+import { UserProvider } from '../../providers/user.service';
 
 import { ProductListing } from '../../models/productListing';
 import { CONST } from '../../shared/constants';
+import { InventoryItem } from '../../models/inventoryItem';
 
 @Component({
   selector: 'page-product',
@@ -21,7 +24,7 @@ export class ProductPage {
 
   private mode: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider) {
     this.product = this.navParams.get('product');
     this.mode = this.navParams.get('mode');
     this.showBuyContent = (this.mode === CONST.buy);
@@ -69,7 +72,15 @@ export class ProductPage {
       this.product.seller
     );
 
+    const invItem = new InventoryItem(
+      this.product.name,
+      buyingNumber,
+      this.userService.getCurrentUser()['username'],
+      new Date().toISOString()
+    );
+
     this.prodService.updateProduct(newProdVal, this.product.$key);
+    this.invService.addItem(invItem);
     this.navCtrl.pop();
   }
 
