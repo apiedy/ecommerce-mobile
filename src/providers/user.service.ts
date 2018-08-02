@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -8,7 +9,7 @@ export class UserProvider {
     users$: FirebaseListObservable<any>;
     currentUser: Object;
 
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase, public evts: Events) {
         this.users$ = this.db.list('users');
     }
     
@@ -24,5 +25,10 @@ export class UserProvider {
 
     public getCurrentUser() {
         return this.currentUser;
+    }
+
+    public logout() {
+        this.currentUser = {};
+        this.evts.publish('user:logout');
     }
 }

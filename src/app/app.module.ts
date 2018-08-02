@@ -13,8 +13,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ProductPage } from '../pages/product/product';
+import { MorePage } from '../pages/more/more';
 
 import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
+import { MoreMenuComponent } from '../components/more-menu/more-menu';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,7 +41,9 @@ import { firebaseConfig } from '../shared/firebase.config';
     LoginPage,
     SignupPage,
     ProductPage,
+    MorePage,
     AddProductModalComponent,
+    MoreMenuComponent,
     ProductsFilter,
     UserProductFilter
   ],
@@ -63,7 +67,9 @@ import { firebaseConfig } from '../shared/firebase.config';
     LoginPage,
     SignupPage,
     ProductPage,
-    AddProductModalComponent
+    MorePage,
+    AddProductModalComponent,
+    MoreMenuComponent
   ],
   providers: [
     StatusBar,
