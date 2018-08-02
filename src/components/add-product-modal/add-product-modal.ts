@@ -43,8 +43,8 @@ export class AddProductModalComponent {
 
   public addProduct() {
     const seller = this.userService.getCurrentUser()['username'];
-    const product = this.listingMode === CONST.sell 
-                    ? new ProductListing(this.addProductForm.value.name, this.addProductForm.value.number, seller, this.addProductForm.value.price)
+    const product = this.listingMode === CONST.sell.toLowerCase() 
+                    ? new ProductListing(this.addProductForm.value.name, this.addProductForm.value.number, seller, this.addProductForm.value.price, null)
                     : new ProductListing(this.tradeProductForm.value.name, 1, seller, null, this.tradeProductForm.value.tradeFor);
 
     this.prodService.addProduct(product);
