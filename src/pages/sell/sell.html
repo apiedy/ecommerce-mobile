@@ -11,7 +11,7 @@
     <ion-list-header>
       Sale Listings
     </ion-list-header>
-    <ion-item *ngFor="let product of productList | async | prodFilter: 'buy'" detail-push (click)="showProductPage(product)">
+    <ion-item *ngFor="let product of productList | async | userProductFilter: 'MANAGE' | prodFilter: 'buy'" detail-push (click)="showProductPage(product)">
       <div>
         <h2>{{ product.name }}</h2>
         <h3>{{ product.number }} available</h3>
@@ -24,7 +24,7 @@
     <ion-list-header>
       Trade Listings
     </ion-list-header>
-    <ion-item *ngFor="let product of productList | async | prodFilter: 'trade'" detail-push (click)="showProductPage(product)">
+    <ion-item *ngFor="let product of productList | async | userProductFilter: 'MANAGE' | prodFilter: 'trade'" detail-push (click)="showProductPage(product)">
       <div>
         <h2>{{ product.name }}</h2>
         <h3>{{ product.number }} available</h3>
