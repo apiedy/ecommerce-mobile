@@ -25,6 +25,7 @@ import { ProductService } from '../providers/products.service';
 import { InventoryService } from '../providers/inventory.service';
 
 import { ProductsFilter } from '../pipes/products-filter.pipe';
+import { UserProductFilter } from '../pipes/user-product-filter.pipe';
 
 import { firebaseConfig } from '../shared/firebase.config';
 
@@ -39,7 +40,8 @@ import { firebaseConfig } from '../shared/firebase.config';
     SignupPage,
     ProductPage,
     AddProductModalComponent,
-    ProductsFilter
+    ProductsFilter,
+    UserProductFilter
   ],
   imports: [
     BrowserModule,

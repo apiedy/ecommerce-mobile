@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item [ngSwitch]="listingMode" *ngFor="let product of productList | async | prodFilter: listingMode" detail-push (click)="showProductPage(product)">
+    <ion-item [ngSwitch]="listingMode" *ngFor="let product of productList | async | userProductFilter: 'MKT' | prodFilter: listingMode" detail-push (click)="showProductPage(product)">
       <div>
         <h2>{{ product.name }}</h2>
         <h3 *ngSwitchCase="'buy'">{{ product.number }} available</h3>
