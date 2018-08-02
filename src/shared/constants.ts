@@ -7,5 +7,6 @@ export const CONST = {
     inventory: 'INV',
     marketplace: 'MKT',
     loadingText: 'Loading, please wait...',
-    loadingSpinner: 'crescent'
+    loadingSpinner: 'crescent',
+    logoutLoadingText: 'Logging out...'
 }
