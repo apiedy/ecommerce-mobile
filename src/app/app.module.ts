@@ -28,6 +28,7 @@ import { InventoryService } from '../providers/inventory.service';
 
 import { ProductsFilter } from '../pipes/products-filter.pipe';
 import { UserProductFilter } from '../pipes/user-product-filter.pipe';
+import { OrderByDatePipe } from '../pipes/orderby-date.pipe';
 
 import { firebaseConfig } from '../shared/firebase.config';
 
@@ -45,7 +46,8 @@ import { firebaseConfig } from '../shared/firebase.config';
     AddProductModalComponent,
     MoreMenuComponent,
     ProductsFilter,
-    UserProductFilter
+    UserProductFilter,
+    OrderByDatePipe
   ],
   imports: [
     BrowserModule,

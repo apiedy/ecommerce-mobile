@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of inventory | async | userProductFilter: 'INV'">
+    <ion-item *ngFor="let item of inventory | async | userProductFilter: 'INV' | orderByDate: 'desc':'purchaseDate'">
         <h2>{{ item.name }}</h2>
         <h3>{{ item.number }} purchased</h3>
         <p>On {{ item.purchaseDate | date }}</p>
