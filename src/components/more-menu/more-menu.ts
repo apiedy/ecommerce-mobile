@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 
 import { UserProvider } from '../../providers/user.service';
+import { CONST } from '../../shared/constants';
 
 @Component({
   selector: 'more-menu',
@@ -13,7 +14,9 @@ export class MoreMenuComponent {
 
   public logout() {
     const loading = this.loadingCtrl.create({
-      duration: 2000
+      content: CONST.logoutLoadingText,
+      spinner: CONST.loadingSpinner,
+      duration: 1000
     });
 
     loading.present();

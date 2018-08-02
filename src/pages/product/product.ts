@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { ProductService } from '../../providers/products.service';
@@ -7,8 +7,8 @@ import { InventoryService } from '../../providers/inventory.service';
 import { UserProvider } from '../../providers/user.service';
 
 import { ProductListing } from '../../models/productListing';
-import { CONST } from '../../shared/constants';
 import { InventoryItem } from '../../models/inventoryItem';
+import { CONST } from '../../shared/constants';
 
 @Component({
   selector: 'page-product',
@@ -26,8 +26,9 @@ export class ProductPage {
 
   private mode: string;
   private listingMode: string;
+  private loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider, public loadingCtrl: LoadingController) {
     this.product = this.navParams.get('product');
     this.mode = this.navParams.get('mode');
     this.listingMode = this.navParams.get('listingMode');
@@ -77,7 +78,10 @@ export class ProductPage {
   }
 
   public remove() {
+    this.createLoader();
+    this.loading.present();
     this.prodService.removeProduct(this.product);
+    this.loading.dismiss();
     this.navCtrl.pop();
   }
 
@@ -88,7 +92,8 @@ export class ProductPage {
       this.product.name,
       newNumber,
       this.product.seller,
-      this.product.price
+      this.product.price,
+      null
     );
 
     const invItem = new InventoryItem(
@@ -98,8 +103,11 @@ export class ProductPage {
       new Date().toISOString()
     );
 
+    this.createLoader();
+    this.loading.present();
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
+    this.loading.dismiss();
     this.navCtrl.pop();
   }
 
@@ -123,8 +131,18 @@ export class ProductPage {
       new Date().toISOString()
     );
 
+    this.createLoader();
+    this.loading.present();
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
+    this.loading.dismiss();
     this.navCtrl.pop();
+  }
+
+  private createLoader() {
+    this.loading = this.loadingCtrl.create({
+      content: CONST.loadingText,
+      spinner: CONST.loadingSpinner
+    });
   }
 }

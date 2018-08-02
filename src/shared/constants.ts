@@ -5,5 +5,8 @@ export const CONST = {
     sell: 'SELL',
     manage: 'MANAGE',
     inventory: 'INV',
-    marketplace: 'MKT'
+    marketplace: 'MKT',
+    loadingText: 'Loading, please wait...',
+    loadingSpinner: 'crescent',
+    logoutLoadingText: 'Logging out...'
 }
