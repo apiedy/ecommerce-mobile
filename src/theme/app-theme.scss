@@ -1,0 +1,32 @@
+.ion-page .tabs .tabbar {
+	@include linear-gradient(left,$facebook-messenger);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+    background-size: cover;
+    border: none;
+}
+
+.toolbar {
+    .toolbar-background {
+        @include linear-gradient(left,$facebook-messenger);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        border-bottom-style: none;
+    }
+
+    .toolbar-content {
+        .toolbar-title {
+            color: white;
+            font-weight: normal;
+        }
+
+        .segment .segment-activated {
+            color: #0072ff;
+        }
+    }
+
+    .bar-button {
+        color: white;
+    }
+}
