@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 @Injectable()
 export class ProductService {
-    constructor(private db: AngularFireDatabase) { 
+    constructor(private db: AngularFireOfflineDatabase) { 
     }
 
     public getProducts() {

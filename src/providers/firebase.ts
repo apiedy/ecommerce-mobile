@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 @Injectable()
 export class FirebaseProvider {
 
-  constructor(public afd: AngularFireDatabase) {  }
+  constructor(public afd: AngularFireOfflineDatabase) {  }
 
   public getUsers() {
     return this.afd.list('/users/');

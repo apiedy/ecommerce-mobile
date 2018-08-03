@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
+import { AfoListObservable } from 'angularfire2-offline/database';
 
 import { InventoryService } from '../../providers/inventory.service';
 
@@ -9,7 +9,7 @@ import { InventoryService } from '../../providers/inventory.service';
   templateUrl: 'inventory.html'
 })
 export class InventoryPage {
-  public inventory: FirebaseListObservable<any[]>;
+  public inventory: AfoListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public invService: InventoryService) {
     this.inventory = this.invService.getItems();

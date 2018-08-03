@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireOfflineDatabase, AfoListObservable } from 'angularfire2-offline/database';
 
 @Injectable()
 export class UserProvider {
-    users$: FirebaseListObservable<any>;
+    users$: AfoListObservable<any>;
     currentUser: Object;
 
-    constructor(private db: AngularFireDatabase, public evts: Events) {
+    constructor(private db: AngularFireOfflineDatabase, public evts: Events) {
         this.users$ = this.db.list('users');
     }
     

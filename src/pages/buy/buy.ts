@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
+import { AfoListObservable } from 'angularfire2-offline/database';
 import 'rxjs/add/operator/map';
 
 import { ProductService } from '../../providers/products.service';
@@ -14,7 +14,7 @@ import { CONST } from '../../shared/constants';
   templateUrl: 'buy.html'
 })
 export class BuyPage {
-  productList: FirebaseListObservable<any[]>;
+  productList: AfoListObservable<any[]>;
   public listingMode: string = 'buy';
 
   constructor(public navCtrl: NavController, public prodService: ProductService) {

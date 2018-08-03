@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 @Injectable()
 export class InventoryService {
 
-  constructor(public db: AngularFireDatabase) { }
+  constructor(public db: AngularFireOfflineDatabase) { }
 
   public getItems() {
     return this.db.list('/inventory/')
   }
 
   public addItem(item) {
-      this.db.list('/inventory/').push(item);
+    this.db.list('/inventory/').push(item);
   }
 }

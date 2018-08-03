@@ -3,8 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { Network } from '@ionic-native/network';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { SellPage } from '../pages/sell/sell';
 import { InventoryPage } from '../pages/inventory/inventory';
@@ -17,9 +23,6 @@ import { MorePage } from '../pages/more/more';
 
 import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
 import { MoreMenuComponent } from '../components/more-menu/more-menu';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
@@ -55,6 +58,7 @@ import { firebaseConfig } from '../shared/firebase.config';
     HttpModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireOfflineModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       backButtonIcon: 'ios-arrow-back'
@@ -77,6 +81,7 @@ import { firebaseConfig } from '../shared/firebase.config';
   providers: [
     StatusBar,
     SplashScreen,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     UserProvider,
