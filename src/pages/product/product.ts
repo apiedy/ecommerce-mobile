@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ProductService } from '../../providers/products.service';
 import { InventoryService } from '../../providers/inventory.service';
 import { UserProvider } from '../../providers/user.service';
+import { ToastService } from '../../providers/toast.service';
 
 import { ProductListing } from '../../models/productListing';
 import { InventoryItem } from '../../models/inventoryItem';
@@ -28,7 +29,7 @@ export class ProductPage {
   private listingMode: string;
   private loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public prodService: ProductService, public invService: InventoryService, public userService: UserProvider, public loadingCtrl: LoadingController, public toastService: ToastService) {
     this.product = this.navParams.get('product');
     this.mode = this.navParams.get('mode');
     this.listingMode = this.navParams.get('listingMode');
@@ -64,7 +65,8 @@ export class ProductPage {
                             this.editForm.value.name,
                             this.editForm.value.quantity,
                             this.product.seller,
-                            this.editForm.value.price
+                            this.editForm.value.price,
+                            null
                           )
                           : new ProductListing(
                             this.editForm.value.name,
@@ -74,14 +76,18 @@ export class ProductPage {
                             this.editForm.value.tradeFor
                           );
                           
+    const toast = this.toastService.createToast('Your listing has been edited successfully.', 'bottom', 'Ok');
     this.prodService.updateProduct(newProductVal, this.product.$key);
+    this.toastService.openToast(toast, true);
   }
 
   public remove() {
     this.createLoader();
     this.loading.present();
+    const toast = this.toastService.createToast('Your product listing has been removed.', 'bottom', 'Ok');
     this.prodService.removeProduct(this.product);
     this.loading.dismiss();
+    this.toastService.openToast(toast, true);
     this.navCtrl.pop();
   }
 
@@ -105,9 +111,11 @@ export class ProductPage {
 
     this.createLoader();
     this.loading.present();
+    const toast = this.toastService.createToast('You have successfully purchased the item, and has been added to your inventory', 'bottom', 'Ok');
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
     this.loading.dismiss();
+    this.toastService.openToast(toast, true);
     this.navCtrl.pop();
   }
 
@@ -133,8 +141,10 @@ export class ProductPage {
 
     this.createLoader();
     this.loading.present();
+    const toast = this.toastService.createToast('You have successfully initiated the trade, and the item has been added to your inventory.', 'bottom', 'Ok');
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
+    this.toastService.openToast(toast, true);
     this.loading.dismiss();
     this.navCtrl.pop();
   }

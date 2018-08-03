@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserProvider } from '../../providers/user.service';
 import { ProductService } from '../../providers/products.service';
+import { ToastService } from '../../providers/toast.service';
 
 import { ProductListing } from '../../models/productListing';
 import { CONST } from '../../shared/constants';
@@ -15,11 +16,11 @@ import { CONST } from '../../shared/constants';
 export class AddProductModalComponent {
 
   public title: string;
-  public listingMode: string = 'trade';
+  public listingMode: string = 'sell';
   public addProductForm: FormGroup;
   public tradeProductForm: FormGroup;
 
-  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder, public userService: UserProvider, public prodService: ProductService) {
+  constructor(public viewCtrl: ViewController, public formBuilder: FormBuilder, public userService: UserProvider, public prodService: ProductService, public toastService: ToastService) {
     this.title = 'Add Product';
     this.createForms();
   }
@@ -47,7 +48,12 @@ export class AddProductModalComponent {
                     ? new ProductListing(this.addProductForm.value.name, this.addProductForm.value.number, seller, this.addProductForm.value.price, null)
                     : new ProductListing(this.tradeProductForm.value.name, 1, seller, null, this.tradeProductForm.value.tradeFor);
 
+    const toastMessage = this.listingMode === CONST.sell.toLowerCase()
+                          ? 'The product has been successfully listed for sale.'
+                          : 'The product has been successfully listed for trade.'; 
+    const toast = this.toastService.createToast(toastMessage, 'bottom', 'Ok');
     this.prodService.addProduct(product);
+    this.toastService.openToast(toast, true);
     this.dismiss();
   }
 }
