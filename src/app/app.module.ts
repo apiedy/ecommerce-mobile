@@ -25,6 +25,7 @@ import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
 import { ProductService } from '../providers/products.service';
 import { InventoryService } from '../providers/inventory.service';
+import { ToastService } from '../providers/toast.service';
 
 import { ProductsFilter } from '../pipes/products-filter.pipe';
 import { UserProductFilter } from '../pipes/user-product-filter.pipe';
@@ -80,7 +81,8 @@ import { firebaseConfig } from '../shared/firebase.config';
     FirebaseProvider,
     UserProvider,
     ProductService,
-    InventoryService
+    InventoryService,
+    ToastService
   ]
 })
 export class AppModule {}
