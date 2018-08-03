@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { SellPage } from '../pages/sell/sell';
 import { InventoryPage } from '../pages/inventory/inventory';
@@ -55,6 +57,7 @@ import { firebaseConfig } from '../shared/firebase.config';
     HttpModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireOfflineModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       backButtonIcon: 'ios-arrow-back'

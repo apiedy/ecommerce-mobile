@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { FirebaseListObservable } from 'angularfire2/database';
+import { AfoListObservable } from 'angularfire2-offline/database';
 
 import { UserProvider } from '../../providers/user.service';
 import { ProductService } from '../../providers/products.service';
@@ -15,7 +15,7 @@ import { CONST } from '../../shared/constants';
   templateUrl: 'sell.html'
 })
 export class SellPage {
-  public productList: FirebaseListObservable<any[]>;
+  public productList: AfoListObservable<any[]>;
   private addproductModal;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public userService: UserProvider, public productService: ProductService) {
