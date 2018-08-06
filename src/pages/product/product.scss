@@ -1,3 +1,23 @@
 page-product {
+    .content {
+        background-color: #f6faff;
+    }
 
+    .item-inner {
+        ion-grid, ion-col {
+            padding: 0px;
+        }
+    }
+
+    .card {
+        .card-header {
+            border-bottom: 0.5px solid rgba(0,0,0,0.25);
+            font-weight: bold;
+        }
+
+        .card-content {
+            padding: 5px;
+            padding-top: 0px;
+        }
+    }
 }

@@ -1,4 +1,12 @@
 add-product-modal {
+    ion-content.content {
+        background-color: #f6faff;
+    }
+
+    .card {
+        padding: 1px;
+    }
+
     .bar-button {
         font-size: 35px;
     }
@@ -7,5 +15,9 @@ add-product-modal {
         input {
             text-align: right;
         }
+    }
+
+    .input-wrapper {
+        border-bottom: 0.5px solid rgba(0,0,0,0.5);
     }
 }
