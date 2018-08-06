@@ -3,7 +3,7 @@
     <ion-title>{{ title }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        Cancel
+        <ion-icon name="ios-close"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content>
-  <div [ngSwitch]="listingMode">
+  <ion-card [ngSwitch]="listingMode">
     <form *ngSwitchCase="'sell'" [formGroup]="addProductForm">
       <ion-item>
         <ion-label>Name</ion-label>
@@ -65,5 +65,5 @@
         </ion-col>
       </ion-row>
     </form>
-  </div>
+  </ion-card>
 </ion-content>

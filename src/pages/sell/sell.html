@@ -3,6 +3,11 @@
     <ion-title>
       Sell
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openModal()">
+        <ion-icon name="ios-add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -35,11 +40,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <button ion-button clear block (click)="openModal()">
-      Add Product &nbsp;<ion-icon name="add"></ion-icon>
-    </button>
-  </ion-toolbar>
-</ion-footer>

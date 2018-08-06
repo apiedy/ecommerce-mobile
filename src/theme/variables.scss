@@ -37,7 +37,9 @@ $colors: (
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
+$toolbar-ios-active-color: white;
+$tabs-tab-color-inactive: white;
+$tabs-tab-color-active: white;
 
 
 // App iOS Variables
@@ -70,6 +72,7 @@ $colors: (
 
 @import "ionic.theme.default";
 @import "./facebook-messenger-theme";
+@import "./app-theme";
 
 // Ionicons
 // --------------------------------------------------

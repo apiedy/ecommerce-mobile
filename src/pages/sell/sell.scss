@@ -1,14 +1,5 @@
 page-sell {
-    ion-footer {
-        .toolbar-background {
-            @include linear-gradient(left, $facebook-messenger);
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            background-size: cover;
-        }
-
-        .button {
-            color: white;
-        }
+    .bar-button {
+        font-size: 35px;
     }
 }
