@@ -24,7 +24,6 @@ import { MorePage } from '../pages/more/more';
 import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
 import { MoreMenuComponent } from '../components/more-menu/more-menu';
 
-import { FirebaseProvider } from '../providers/firebase';
 import { UserProvider } from '../providers/user.service';
 import { ProductService } from '../providers/products.service';
 import { InventoryService } from '../providers/inventory.service';
@@ -83,7 +82,6 @@ import { firebaseConfig } from '../shared/firebase.config';
     SplashScreen,
     Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider,
     UserProvider,
     ProductService,
     InventoryService,

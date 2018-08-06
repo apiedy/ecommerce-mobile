@@ -9,6 +9,7 @@ import { ToastService } from '../../providers/toast.service';
 
 import { ProductListing } from '../../models/productListing';
 import { InventoryItem } from '../../models/inventoryItem';
+
 import { CONST } from '../../shared/constants';
 
 @Component({
@@ -75,16 +76,17 @@ export class ProductPage {
                             null,
                             this.editForm.value.tradeFor
                           );
-                          
-    const toast = this.toastService.createToast('Your listing has been edited successfully.', 'bottom', 'Ok');
+
     this.prodService.updateProduct(newProductVal, this.product.$key);
+
+    const toast = this.toastService.createToast('Your listing has been edited successfully.', 'Ok');
     this.toastService.openToast(toast, true);
   }
 
   public remove() {
     this.createLoader();
     this.loading.present();
-    const toast = this.toastService.createToast('Your product listing has been removed.', 'bottom', 'Ok');
+    const toast = this.toastService.createToast('Your product listing has been removed.', 'Ok');
     this.prodService.removeProduct(this.product);
     this.loading.dismiss();
     this.toastService.openToast(toast, true);
@@ -111,7 +113,7 @@ export class ProductPage {
 
     this.createLoader();
     this.loading.present();
-    const toast = this.toastService.createToast('You have successfully purchased the item, and has been added to your inventory', 'bottom', 'Ok');
+    const toast = this.toastService.createToast('You have successfully purchased the item, and has been added to your inventory', 'Ok');
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
     this.loading.dismiss();
@@ -139,11 +141,13 @@ export class ProductPage {
       new Date().toISOString()
     );
 
-    this.createLoader();
-    this.loading.present();
-    const toast = this.toastService.createToast('You have successfully initiated the trade, and the item has been added to your inventory.', 'bottom', 'Ok');
     this.prodService.updateProduct(newProdVal, this.product.$key);
     this.invService.addItem(invItem);
+    
+    this.createLoader();
+    this.loading.present();
+    
+    const toast = this.toastService.createToast('You have successfully initiated the trade, and the item has been added to your inventory.', 'Ok');
     this.toastService.openToast(toast, true);
     this.loading.dismiss();
     this.navCtrl.pop();

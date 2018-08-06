@@ -21,7 +21,7 @@ export class MoreMenuComponent {
       duration: 500
     });
 
-    const toast = this.toastService.createToast('You have successfully logged out of the app.', 'bottom');
+    const toast = this.toastService.createToast('You have successfully logged out of the app.');
     loading.present();
     this.userService.logout();
     this.toastService.openToast(toast, false);

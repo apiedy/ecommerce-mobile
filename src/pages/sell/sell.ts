@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { AfoListObservable } from 'angularfire2-offline/database';
 
-import { UserProvider } from '../../providers/user.service';
 import { ProductService } from '../../providers/products.service';
 
 import { AddProductModalComponent } from '../../components/add-product-modal/add-product-modal';
@@ -18,7 +17,7 @@ export class SellPage {
   public productList: AfoListObservable<any[]>;
   private addproductModal;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public userService: UserProvider, public productService: ProductService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public productService: ProductService) {
     this.productList = this.productService.getProducts();
     this.addproductModal = this.modalCtrl.create(AddProductModalComponent);
   }
@@ -34,9 +33,5 @@ export class SellPage {
       listingMode: product.price ? CONST.buy : CONST.trade
     }
     this.navCtrl.push(ProductPage, params);
-  }
-
-  ionViewDidLoad() {
-    console.log(this.userService.getCurrentUser())
   }
 }

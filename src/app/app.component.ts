@@ -29,12 +29,12 @@ export class MyApp {
     });
 
     this.network.onDisconnect().subscribe(() => {
-      const toast = this.toastService.createToast('Network Disconnected! All operations will continue to work normally.', 'top');
+      const toast = this.toastService.createToast('Network Disconnected! All operations will continue to work normally.');
       this.toastService.openToast(toast, false);
     });
     
     this.network.onConnect().subscribe(() => {
-      const toast = this.toastService.createToast('Back Online!', 'top');
+      const toast = this.toastService.createToast('Back Online!');
       this.toastService.openToast(toast, false);
     });
   }

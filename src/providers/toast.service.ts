@@ -7,7 +7,7 @@ import { Config } from '../shared/Config';
 export class ToastService {
     constructor(private toastCtrl: ToastController) { }
 
-    public createToast(message, position, buttonText?, duration = Config.toastDuration): Toast {
+    public createToast(message, buttonText?, position = Config.toastPosition, duration = Config.toastDuration): Toast {
         return this.toastCtrl.create({
             message: message,
             position: position,

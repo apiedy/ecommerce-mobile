@@ -10,7 +10,15 @@ export class UserProvider {
     currentUser: Object;
 
     constructor(private db: AngularFireOfflineDatabase, public evts: Events) {
-        this.users$ = this.db.list('users');
+        this.users$ = this.getUsers();
+    }
+    
+    public getUsers() {
+        return this.db.list('/users/');
+    }
+
+    public addUser(user) {
+        this.users$.push(user);
     }
     
     public login(username, password) {
