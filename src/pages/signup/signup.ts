@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseProvider } from '../../providers/firebase';
+
+import { UserProvider } from '../../providers/user.service';
+import { ToastService } from '../../providers/toast.service';
+
 import { User } from '../../models/user';
 
 @Component({
@@ -12,7 +15,7 @@ export class SignupPage {
 
   signupForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public userService: UserProvider, public toastService: ToastService) {
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -36,6 +39,9 @@ export class SignupPage {
     
     const user: User = new User(username, password);
     
-    this.firebaseProvider.addUsers(user);
+    this.userService.addUser(user);
+
+    const toast = this.toastService.createToast('You have successfully signed up for the application, you can now login using your details.')
+    this.toastService.openToast(toast);
   }
 }

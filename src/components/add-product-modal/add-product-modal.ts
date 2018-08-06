@@ -7,7 +7,9 @@ import { ProductService } from '../../providers/products.service';
 import { ToastService } from '../../providers/toast.service';
 
 import { ProductListing } from '../../models/productListing';
+
 import { CONST } from '../../shared/constants';
+import { Config } from '../../shared/Config';
 
 @Component({
   selector: 'add-product-modal',
@@ -48,11 +50,11 @@ export class AddProductModalComponent {
                     ? new ProductListing(this.addProductForm.value.name, this.addProductForm.value.number, seller, this.addProductForm.value.price, null)
                     : new ProductListing(this.tradeProductForm.value.name, 1, seller, null, this.tradeProductForm.value.tradeFor);
 
+    this.prodService.addProduct(product);
     const toastMessage = this.listingMode === CONST.sell.toLowerCase()
                           ? 'The product has been successfully listed for sale.'
                           : 'The product has been successfully listed for trade.'; 
-    const toast = this.toastService.createToast(toastMessage, 'bottom', 'Ok');
-    this.prodService.addProduct(product);
+    const toast = this.toastService.createToast(toastMessage, 'Ok');
     this.toastService.openToast(toast, true);
     this.dismiss();
   }
