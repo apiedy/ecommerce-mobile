@@ -9,7 +9,6 @@ import { ToastService } from '../../providers/toast.service';
 import { ProductListing } from '../../models/productListing';
 
 import { CONST } from '../../shared/constants';
-import { Config } from '../../shared/Config';
 
 @Component({
   selector: 'add-product-modal',
