@@ -4,16 +4,14 @@ import { AfoListObservable } from 'angularfire2-offline/database';
 import 'rxjs/add/operator/map';
 
 import { ProductService } from '../../providers/products.service';
-
 import { ProductPage } from  '../product/product';
-
 import { CONST } from '../../shared/constants';
 
 @Component({
-  selector: 'page-buy',
-  templateUrl: 'buy.html'
+  selector: 'page-marketplace',
+  templateUrl: 'marketplace.html'
 })
-export class BuyPage {
+export class MarketplacePage {
   productList: AfoListObservable<any[]>;
   public listingMode: string = 'buy';
 
