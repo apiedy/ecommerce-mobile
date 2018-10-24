@@ -11,9 +11,9 @@ import { CONST } from '../../shared/constants';
 
 @Component({
   selector: 'page-sell',
-  templateUrl: 'sell.html'
+  templateUrl: 'manage.html'
 })
-export class SellPage {
+export class ManagePage {
   public productList: AfoListObservable<any[]>;
   private addproductModal;
 

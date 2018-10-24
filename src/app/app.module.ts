@@ -12,14 +12,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { SellPage } from '../pages/sell/sell';
+import { ManagePage } from '../pages/manage/manage';
 import { InventoryPage } from '../pages/inventory/inventory';
-import { BuyPage } from '../pages/buy/buy';
+import { MarketplacePage } from '../pages/marketplace/marketplace';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ProductPage } from '../pages/product/product';
-import { MorePage } from '../pages/more/more';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { AddProductModalComponent } from '../components/add-product-modal/add-product-modal';
 import { MoreMenuComponent } from '../components/more-menu/more-menu';
@@ -38,14 +38,14 @@ import { firebaseConfig } from '../shared/firebase.config';
 @NgModule({
   declarations: [
     MyApp,
-    SellPage,
+    ManagePage,
     InventoryPage,
-    BuyPage,
+    MarketplacePage,
     TabsPage,
     LoginPage,
     SignupPage,
     ProductPage,
-    MorePage,
+    SettingsPage,
     AddProductModalComponent,
     MoreMenuComponent,
     ProductsFilter,
@@ -66,14 +66,14 @@ import { firebaseConfig } from '../shared/firebase.config';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SellPage,
+    ManagePage,
     InventoryPage,
-    BuyPage,
+    MarketplacePage,
     TabsPage,
     LoginPage,
     SignupPage,
     ProductPage,
-    MorePage,
+    SettingsPage,
     AddProductModalComponent,
     MoreMenuComponent
   ],
